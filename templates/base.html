@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}Video Store{% endblock %}</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: 30px auto;
+    background-color: yellow;   /* yellow background */
+    color: red;                 /* red text */
+  }
+  a.button, button {
+    padding: 8px 12px;
+    text-decoration: none;
+    border: 1px solid red;
+    border-radius: 6px;
+    background: white;
+    color: red;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 14px;
+  }
+  th, td {
+    border: 1px solid red;
+    padding: 8px;
+  }
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+</style>
+
+</head>
+<body>
+  <div class="topbar">
+    <h1><a href="{% url 'video_list' %}" style="color: inherit; text-decoration: none;">Video Store</a></h1>
+    <a class="button" href="{% url 'video_create' %}">+ Add Video</a>
+  </div>
+  <hr>
+  {% block content %}{% endblock %}
+</body>
+</html>

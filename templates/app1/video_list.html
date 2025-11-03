@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}All Videos{% endblock %}
+{% block content %}
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Year</th>
+      <th>Genre</th>
+      <th>Director</th>
+      <th>Actors</th>
+      <th>Duration (min)</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for v in videos %}
+    <tr>
+      <td>{{ v.MovieTitle }}</td>
+      <td>{{ v.ReleaseYear }}</td>
+      <td>{{ v.MovieGenre }}</td>
+      <td>{{ v.DirectorName }}</td>
+      <td>{{ v.Actor1Name }}{% if v.Actor2Name %}, {{ v.Actor2Name }}{% endif %}</td>
+      <td>{{ v.DurationMinutes }}</td>
+      <td>
+        <a class="button" href="{% url 'video_update' v.pk %}">Edit</a>
+        <a class="button" href="{% url 'video_delete' v.pk %}">Delete</a>
+      </td>
+    </tr>
+  {% empty %}
+    <tr><td colspan="7">No videos yet. Click “Add Video”.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

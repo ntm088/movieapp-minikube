@@ -1,0 +1,13 @@
+In this assignment, I created a Docker image for my Django movie application.
+I wrote a Dockerfile specifying Python 3.11 and installed all dependencies using requirements.txt.
+I then built the image with docker build -t movie-app . and ran it using
+docker run -p 8001:8000 -d movie-app.
+The app successfully ran in a Docker container and was accessible on http://localhost:8001.
+
+
+FROM python:3.11-slim
+WORKDIR /app
+COPY requirements.txt /app
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . /app
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8001"]
